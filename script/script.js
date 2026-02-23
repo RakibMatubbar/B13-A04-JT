@@ -69,6 +69,8 @@ headRejectedBtn.addEventListener('click', function(){
 });
 
 
+
+
 // INTERVIEW + REJECTED:
 function moveJobCard(card, targetContainer, move=false){
     let cardClone;
@@ -94,6 +96,18 @@ document.addEventListener('click', function(event){
     const sourrceContainer = card.parentNode;
 
     let destinationContainer;
+
+
+    // NOT APPLIED Btn:
+    if(btn.classList.contains('interview-btn')){
+        destinationContainer = interviewContainer;
+        updateStatusBtn(card, 'interview');
+    }
+    else{
+        destinationContainer = rejectedContainer;
+        updateStatusBtn(card, 'rejected');
+    }
+
 
     if(btn.classList.contains('interview-btn')){
         destinationContainer = interviewContainer;
@@ -146,3 +160,4 @@ document.addEventListener('click', function(event){
     updateJobInfo();
 
 })
+
