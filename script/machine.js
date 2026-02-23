@@ -49,15 +49,24 @@ function checkNoJob(){
 function updateStatusBtn(card, type){
     const statusBtn = card.querySelector('.status-btn');
 
+    card.classList.remove('border-l-4', 'border-green-500', 'border-red-500');
+
     if(type === 'interview'){
-        // dynamicStyle.remove();
+        statusBtn.classList.remove('bg-red-100', 'text-red-600');
         statusBtn.classList.add('bg-green-100', 
         'text-green-600');
 
         statusBtn.innerText = 'INTERVIEW';
+
+        card.classList.add('border-l-4', 'border-green-500');
     }
     else if(type === 'rejected'){
+        statusBtn.classList.remove('bg-green-100', 'text-green-600');
         statusBtn.classList.add('bg-red-100', 'text-red-600');
+
         statusBtn.innerText = 'REJECTED';
+
+        card.classList.add('border-l-4', 'border-red-500');
     }
 }
+
