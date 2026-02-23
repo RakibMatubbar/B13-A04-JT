@@ -49,10 +49,10 @@ function checkNoJob(){
 function updateStatusBtn(card, type){
     const statusBtn = card.querySelector('.status-btn');
 
-    statusBtn.classList.remove('bg-[#EEF4FF]', 'text-[#002C5C]', 'bg-green-100', 'text-green-600', 'bg-red-100', 'text-red-600');
-
     if(type === 'interview'){
-        statusBtn.classList.add('bg-green-100', 'text-green-600')
+        // dynamicStyle.remove();
+        statusBtn.classList.add('bg-green-100', 
+        'text-green-600');
 
         statusBtn.innerText = 'INTERVIEW';
     }

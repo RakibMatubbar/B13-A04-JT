@@ -28,6 +28,7 @@
     <!-- Style CSS: -->
     <style>
         * {
+            /* Geist Font Family: */
             font-family: "Geist", sans-serif;
         }
     </style>
@@ -43,22 +44,22 @@
         <h2 class="text-xl font-bold text-[#002C5C] mb-2">Job Application Tracker</h2>
 
         <!-- Count Cards: -->
-        <div id="all-count-cards" class="grid grid-cols-3 gap-3">
+        <div id="all-count-cards" class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center text-lg font-bold">
 
             <!-- Total-Count: -->
-            <div class="bg-[#FFFFFF] rounded-md shadow-xl p-2 text-[#002C5C] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div class="bg-[#FFFFFF] rounded-md shadow-xl p-2 text-[#002C5C] hover:bg-blue-100 hover:shadow-2xl hover:-translate-y-1 transition-all  duration-300">
                 <p>Total</p>
                 <p id="total-count" class="font-bold">0</p>
             </div>
 
             <!-- Interview-Count: -->
-            <div class="bg-[#FFFFFF]  rounded-md shadow-xl p-2 text-[#002C5C] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div class="bg-[#FFFFFF]  rounded-md shadow-xl p-2 text-[#002C5C] hover:bg-green-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 <p>Interviwe</p>
                 <p id="interview-count" class="text-green-500 font-bold">0</p>
             </div>
 
             <!-- Rejected-Count: -->
-            <div class="bg-[#FFFFFF]  rounded-md shadow-xl p-2 text-[#002C5C] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div class="bg-[#FFFFFF]  rounded-md shadow-xl p-2 col-span-2 md:col-span-1 text-[#002C5C] hover:bg-red-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                 <p>Rejected</p>
                 <p id="rejected-count" class="text-red-500 font-bold">0</p>
             </div>
@@ -74,18 +75,18 @@
 
         <!-- Jobs Heading: -->
         <div class="flex items-center justify-between">
-            <h2 class=" text-[#002C5C] font-bold">Available Jobs</h2>
+            <h2 class=" text-[#002C5C] text-xl font-bold">Available Jobs</h2>
         <p id="update-job-info" class="text-[10px] text-[#002C5C] font-bold">0</p>
         </div>
 
         <!-- Jobs Btn: -->
-        <div class="flex gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
 
             <button onclick="showOnly('jobs-cards')" id="all-jobs-btn" class="btn  text-[#002C5C] hover:bg-blue-600 hover:text-white">All Jobs</button>
 
             <button onclick="showOnly('interview-cards')" id="head-interview-btn" class=" btn text-[#002C5C] hover:bg-green-600 hover:text-white">Interview</button>
 
-            <button onclick="showOnly('rejected-cards')" id="head-rejected-btn" class="btn text-[#002C5C] hover:bg-red-600 hover:text-white">Rejected</button>
+            <button onclick="showOnly('rejected-cards')" id="head-rejected-btn" class="btn text-[#002C5C] col-span-2 md:col-span-1 hover:bg-red-600 hover:text-white">Rejected</button>
         </div>
 
     </section>
@@ -116,7 +117,7 @@
 
                 <!-- Middle Btn: -->
                 <button id="not-applied-btn-one"
-                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
+                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md">NOT
                     APPLIED</button>
 
                 <!-- Middle Paragraph: -->
@@ -159,7 +160,7 @@
 
                 <!-- Middle Btn: -->
                 <button id="not-applied-btn-two"
-                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
+                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md">NOT
                     APPLIED</button>
 
                 <!-- Middle Paragraph: -->
@@ -202,7 +203,7 @@
 
                 <!-- Middle Btn: -->
                 <button id="not-applied-btn-three"
-                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
+                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md">NOT
                     APPLIED</button>
 
                 <!-- Middle Paragraph: -->
@@ -246,7 +247,7 @@
 
                 <!-- Middle Btn: -->
                 <button id="not-applied-btn-four"
-                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
+                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md">NOT
                     APPLIED</button>
 
                 <!-- Middle Paragraph: -->
@@ -290,7 +291,7 @@
 
                 <!-- Middle Btn: -->
                 <button id="not-applied-btn-five"
-                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
+                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md">NOT
                     APPLIED</button>
 
                 <!-- Middle Paragraph: -->
@@ -335,7 +336,7 @@
 
                 <!-- Middle Btn: -->
                 <button id="not-applied-btn-six"
-                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
+                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md">NOT
                     APPLIED</button>
 
                 <!-- Middle Paragraph: -->
@@ -379,7 +380,7 @@
 
                 <!-- Middle Btn: -->
                 <button id="not-applied-btn-seven"
-                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
+                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md">NOT
                     APPLIED</button>
 
                 <!-- Middle Paragraph: -->
@@ -422,7 +423,7 @@
 
                 <!-- Middle Btn: -->
                 <button id="not-applied-btn-eight"
-                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
+                    class="status-btn p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md">NOT
                     APPLIED</button>
 
                 <!-- Middle Paragraph: -->
