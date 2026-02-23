@@ -1,6 +1,11 @@
 
 // Hidden / Show function:
+let currentSection = 'jobs-cards';
+
 function showOnly(id){
+
+    currentSection = id;
+    
     const jobsCards = document.getElementById('jobs-cards');
     const interviewCards = document.getElementById('interview-cards');
     const rejectedCards = document.getElementById('rejected-cards');
@@ -11,4 +16,32 @@ function showOnly(id){
 
     const selected = document.getElementById(id);
     selected.classList.remove('hidden')
+
+    checkNoJob();
 }
+
+
+// No Job Section:
+function checkNoJob(){
+    const noJob = document.getElementById('no-job');
+
+    let length;
+
+    if(currentSection === 'jobs-cards'){
+        length = document.getElementById('jobs-cards').children.length;
+    }
+    else if(currentSection === 'interview-cards'){
+        length = document.getElementById('interview-container').children.length;
+    }
+    else if(currentSection === 'rejected-cards'){
+        length = document.getElementById('rejected-container').children.length;
+    }
+
+    if(length === 0){
+        noJob.classList.remove('hidden');
+    }
+    else{noJob.classList.add('hidden')
+        
+    }
+}
+
