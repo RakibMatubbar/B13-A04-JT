@@ -8,6 +8,9 @@
     <!-- Website Title: -->
     <title>B13-A04-JT</title>
 
+    <!-- Web Home Icon: -->
+    <link rel="shortcut icon" href="./image/home.svg" type="image/x-icon">
+
     <!-- daisyUI + Tailwind Link: -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -35,12 +38,12 @@
 <body class="min-h-screen w-[80%] mx-auto bg-[#F8FAFC]">
 
     <!-- Tracker Calculator Section: -->
-    <section class="pt-4 px-8">
+    <section id="header-calculator" class="pt-4 px-8">
 
         <h2 class="text-xl font-bold text-[#002C5C] mb-2">Job Application Tracker</h2>
 
         <!-- Count Cards: -->
-        <div class="grid grid-cols-3 gap-3">
+        <div id="all-count-cards" class="grid grid-cols-3 gap-3">
 
             <!-- Total-Count: -->
             <div class="bg-[#FFFFFF] rounded-md shadow-xl p-2 text-[#002C5C] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
@@ -67,28 +70,31 @@
     </section>
 
     <!-- Header Btn Section: -->
-    <section class="px-8">
+    <section id="jobs-btn" class="px-8 pt-6 space-y-6">
 
         <!-- Jobs Heading: -->
-        <h2 class="mb-3 mt-6 text-[#002C5C] font-bold">Available Jobs</h2>
+        <div class="flex items-center justify-between">
+            <h2 class=" text-[#002C5C] font-bold">Available Jobs</h2>
+        <p id="update-job-info" class="text-[10px] text-[#002C5C] font-bold">0</p>
+        </div>
 
         <!-- Jobs Btn: -->
         <div class="flex gap-4">
 
-            <button class="btn  text-[#002C5C] hover:bg-blue-600 hover:text-white">All Jobs</button>
+            <button onclick="showOnly('jobs-cards')" id="all-jobs-btn" class="btn  text-[#002C5C] hover:bg-blue-600 hover:text-white">All Jobs</button>
 
-            <button class="btn text-[#002C5C] hover:bg-green-600 hover:text-white">Interview</button>
+            <button onclick="showOnly('interview-cards')" id="head-interview-btn" class=" btn text-[#002C5C] hover:bg-green-600 hover:text-white">Interview</button>
 
-            <button class="btn text-[#002C5C] hover:bg-red-600 hover:text-white">Rejected</button>
+            <button onclick="showOnly('rejected-cards')" id="head-rejected-btn" class="btn text-[#002C5C] hover:bg-red-600 hover:text-white">Rejected</button>
         </div>
 
     </section>
 
     <!-- All Jobs Cards -->
-    <section id="all-cards" class="p-8 space-y-6">
+    <section id="jobs-cards" class="p-8 space-y-6">
 
         <!-- Job Card : 01 : -->
-        <div class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+        <div id="job-card-one" class="job-card bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
 
             <!-- Card Heading: -->
             <div class="flex justify-between items-center">
@@ -96,8 +102,8 @@
                 <h1 class="font-bold text-[#002C5C]">Mobile First Corp</h1>
 
                 <!-- Delete Btn: -->
-                <button
-                    class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
+                <button id="delete-btn-one"
+                    class="delete-btn w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
                         class="fa-regular fa-trash-can text-slate-500 text-lg hover:text-red-500"></i></button>
 
             </div>
@@ -109,7 +115,7 @@
                 <p>Remote • Full-time • $130,000 - $175,000</p>
 
                 <!-- Middle Btn: -->
-                <button
+                <button id="not-applied-btn-one"
                     class="p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
                     APPLIED</button>
 
@@ -121,17 +127,17 @@
 
             <!-- Bottom Btn: -->
             <div class="mt-3 flex gap-4">
-                <button
-                    class="p-2 border-1 border-green-300 text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
+                <button id="interview-btn-one"
+                    class="interview-btn p-2 border-1 border-green-300 text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
 
-                <button
-                    class="p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
+                <button id="rejected-btn-one"
+                    class="rejected-btn p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
             </div>
 
         </div>
 
         <!-- Job Card : 02 : -->
-        <div class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+        <div id="job-card-two" class="job-card bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
 
             <!-- Card Heading: -->
             <div class="flex justify-between items-center">
@@ -139,8 +145,8 @@
                 <h1 class="font-bold text-[#002C5C]">WebFlow Agency</h1>
 
                 <!-- Delete Btn: -->
-                <button
-                    class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
+                <button id="delete-btn-two"
+                    class="delete-btn w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
                         class="fa-regular fa-trash-can text-slate-500 text-lg hover:text-red-500"></i></button>
 
             </div>
@@ -152,7 +158,7 @@
                 <p>Los Angeles, CA • Part-time • $80,000 - $120,000</p>
 
                 <!-- Middle Btn: -->
-                <button
+                <button id="not-applied-btn-two"
                     class="p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
                     APPLIED</button>
 
@@ -164,17 +170,17 @@
 
             <!-- Bottom Btn: -->
             <div class="mt-3 flex gap-4">
-                <button
-                    class="p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
+                <button id="interview-btn-two"
+                    class="interview-btn p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
 
-                <button
-                    class="p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
+                <button id="rejected-btn-two"
+                    class="rejected-btn p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
             </div>
 
         </div>
 
         <!-- Job Card : 03 : -->
-        <div class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+        <div id="job-card-three" class="job-card bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
 
             <!-- Card Heading: -->
             <div class="flex justify-between items-center">
@@ -182,8 +188,8 @@
                 <h1 class="font-bold text-[#002C5C]">DataViz Solutions</h1>
 
                 <!-- Delete Btn: -->
-                <button
-                    class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
+                <button id="delete-btn-three"
+                    class="delete-btn w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
                         class="fa-regular fa-trash-can text-slate-500 text-lg hover:text-red-500"></i></button>
 
             </div>
@@ -195,7 +201,7 @@
                 <p>Boston, MA • Full-time • $125,000 - $165,000</p>
 
                 <!-- Middle Btn: -->
-                <button
+                <button id="not-applied-btn-three"
                     class="p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
                     APPLIED</button>
 
@@ -207,18 +213,18 @@
 
             <!-- Bottom Btn: -->
             <div class="mt-3 flex gap-4">
-                <button
-                    class="p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
+                <button id="interview-btn-three"
+                    class="interview-btn p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
 
-                <button
-                    class="p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
+                <button id="rejected-btn-three"
+                    class="rejected-btn p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
             </div>
 
         </div>
 
 
         <!-- Job Card : 04 : -->
-        <div class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+        <div id="job-card-four" class="job-card bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
 
             <!-- Card Heading: -->
             <div class="flex justify-between items-center">
@@ -226,8 +232,8 @@
                 <h1 class="font-bold text-[#002C5C]">Innovation Labs</h1>
 
                 <!-- Delete Btn: -->
-                <button
-                    class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
+                <button id="delete-btn-four"
+                    class="delete-btn w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
                         class="fa-regular fa-trash-can text-slate-500 text-lg hover:text-red-500"></i></button>
 
             </div>
@@ -239,7 +245,7 @@
                 <p>Austin, TX • Full-time • $110,000 - $150,000</p>
 
                 <!-- Middle Btn: -->
-                <button
+                <button id="not-applied-btn-four"
                     class="p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
                     APPLIED</button>
 
@@ -251,18 +257,18 @@
 
             <!-- Bottom Btn: -->
             <div class="mt-3 flex gap-4">
-                <button
-                    class="p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
+                <button id="interview-btn-four"
+                    class="interview-btn p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
 
-                <button
-                    class="p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
+                <button id="rejected-btn-four"
+                    class="rejected-btn p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
             </div>
 
         </div>
 
 
         <!-- Job Card : 05 : -->
-        <div class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+        <div id="job-card-five" class="job-card bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
 
             <!-- Card Heading: -->
             <div class="flex justify-between items-center">
@@ -270,8 +276,8 @@
                 <h1 class="font-bold text-[#002C5C]">CloudFirst Inc</h1>
 
                 <!-- Delete Btn: -->
-                <button
-                    class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
+                <button id="delete-btn-five"
+                    class="delete-btn w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
                         class="fa-regular fa-trash-can text-slate-500 text-lg hover:text-red-500"></i></button>
 
             </div>
@@ -283,7 +289,7 @@
                 <p>Seattle, WA • Full-time • $140,000 - $190,000</p>
 
                 <!-- Middle Btn: -->
-                <button
+                <button id="not-applied-btn-five"
                     class="p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
                     APPLIED</button>
 
@@ -295,11 +301,11 @@
 
             <!-- Bottom Btn: -->
             <div class="mt-3 flex gap-4">
-                <button
-                    class="p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
+                <button id="interview-btn-five"
+                    class="interview-btn p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
 
-                <button
-                    class="p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
+                <button id="rejected-btn-five"
+                    class="rejected-btn p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
             </div>
 
         </div>
@@ -307,7 +313,7 @@
 
 
         <!-- Job Card : 06 : -->
-        <div class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+        <div id="job-card-six" class="job-card bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
 
             <!-- Card Heading: -->
             <div class="flex justify-between items-center">
@@ -315,8 +321,8 @@
                 <h1 class="font-bold text-[#002C5C]">MegaCorp Solutions</h1>
 
                 <!-- Delete Btn: -->
-                <button
-                    class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
+                <button id="delete-btn-six"
+                    class="delete-btn w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
                         class="fa-regular fa-trash-can text-slate-500 text-lg hover:text-red-500"></i></button>
 
             </div>
@@ -328,7 +334,7 @@
                 <p>New York, NY • Full-time • $130,000 - $170,00</p>
 
                 <!-- Middle Btn: -->
-                <button
+                <button id="not-applied-btn-six"
                     class="p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
                     APPLIED</button>
 
@@ -340,18 +346,18 @@
 
             <!-- Bottom Btn: -->
             <div class="mt-3 flex gap-4">
-                <button
-                    class="p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
+                <button id="interview-btn-six"
+                    class="interview-btn p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
 
-                <button
-                    class="p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
+                <button id="rejected-btn-six"
+                    class="rejected-btn p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
             </div>
 
         </div>
 
 
         <!-- Job Card : 07 : -->
-        <div class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+        <div id="job-card-seven" class="job-card bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
 
             <!-- Card Heading: -->
             <div class="flex justify-between items-center">
@@ -359,8 +365,8 @@
                 <h1 class="font-bold text-[#002C5C]">StartupXYZ</h1>
 
                 <!-- Delete Btn: -->
-                <button
-                    class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
+                <button id="delete-btn-seven"
+                    class="delete-btn w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
                         class="fa-regular fa-trash-can text-slate-500 text-lg hover:text-red-500"></i></button>
 
             </div>
@@ -372,7 +378,7 @@
                 <p>Remote • Full-time • $120,000 - $160,000</p>
 
                 <!-- Middle Btn: -->
-                <button
+                <button id="not-applied-btn-seven"
                     class="p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
                     APPLIED</button>
 
@@ -384,17 +390,17 @@
 
             <!-- Bottom Btn: -->
             <div class="mt-3 flex gap-4">
-                <button
-                    class="p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
+                <button id="interview-btn-seven"
+                    class="interview-btn p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
 
-                <button
-                    class="p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
+                <button id="rejected-btn-seven"
+                    class="rejected-btn p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
             </div>
 
         </div>
 
         <!-- Job Card : 08 : -->
-        <div class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+        <div id="job-card-eight" class="job-card bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
 
             <!-- Card Heading: -->
             <div class="flex justify-between items-center">
@@ -402,8 +408,8 @@
                 <h1 class="font-bold text-[#002C5C]">TechCorp Industries</h1>
 
                 <!-- Delete Btn: -->
-                <button
-                    class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
+                <button id="delete-btn-eight"
+                    class="delete-btn w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-100 transition-colors cursor-pointer"><i
                         class="fa-regular fa-trash-can text-slate-500 text-lg hover:text-red-500"></i></button>
 
             </div>
@@ -415,7 +421,7 @@
                 <p>San Francisco, CA • Full-time • $130,000 - $175,000</p>
 
                 <!-- Middle Btn: -->
-                <button
+                <button id="not-applied-btn-eight"
                     class="p-4 my-3 bg-[#EEF4FF] text-[#002C5C] font-bold rounded-md cursor-pointer hover:bg-red-100 transition-colors hover:text-blue-600">NOT
                     APPLIED</button>
 
@@ -428,18 +434,55 @@
 
             <!-- Bottom Btn: -->
             <div class="mt-3 flex gap-4">
-                <button
-                    class="p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
+                <button id="interview-btn-eight"
+                    class="interview-btn p-2 border-1 border-green-300m text-green-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-green-300  hover:border-none cursor-pointer">INTERVIEW</button>
 
-                <button
-                    class="p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
+                <button id="rejected-btn-eight"
+                    class="rejected-btn p-2 border-1 border-red-300m text-red-500 rounded-md font-bold hover:bg-red hover:text-white hover:bg-red-300 hover:border-none cursor-pointer">REJECTED</button>
             </div>
 
         </div>
 
     </section>
 
-    <script src="script/card1.js"></script>
+    <!-- All Interview Cards: -->
+    <section id="interview-cards" class="p-8 hidden"">
+
+        <!-- Interview Container: -->
+        <div id="interview-container" class="flex flex-col gap-6"></div>
+
+    </section>
+
+    <!-- All Rejected Cards: -->
+    <section id="rejected-cards" class="p-8 hidden">
+    
+        <!-- Rejected Container: -->
+        <div id="rejected-container" class="flex flex-col gap-6"></div>
+
+    </section>
+
+    <!-- No Job Section: -->
+    <section id="no-job" class="p-8 hidden">
+        <div id="no-job-container" class="bg-[#FFFFFF] rounded-md p-6 hover:shadow-2xl hover:translate-y-1 transition-all duration-300">
+
+            <!-- Card Heading: -->
+            <div class="flex flex-col justify-between items-center h-[250px]">
+
+                <!-- No Job Img: -->
+                <img src="./image/jobs.png" alt="">
+
+                <!-- Paragraph: -->
+                <p class="text-[#002C5C] font-bold text-xl ">No jobs available.</p>
+                <p class="text-[#cccccc] ">Check back soon for new job opportunities.</p>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JavaScript Link: -->
+     <script src="script/machine.js"></script>
+     <script src="script/script.js"></script>
 </body>
 
 </html>
