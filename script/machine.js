@@ -1,32 +1,41 @@
+// MACHINE.JS - The Engine of the Application:
 
-// Hidden / Show function:
+// Hidden / Show function: Which Section Want to Show or Hide:
+
+// Tracking which section is currently visible:
 let currentSection = 'jobs-cards';
 
+// Controls which main section to display:
 function showOnly(id){
 
     currentSection = id;
     
+    //  Select all main containers:
     const jobsCards = document.getElementById('jobs-cards');
     const interviewCards = document.getElementById('interview-cards');
     const rejectedCards = document.getElementById('rejected-cards');
 
+    // Hide everything first to reset the view
     jobsCards.classList.add('hidden');
     interviewCards.classList.add('hidden');
     rejectedCards.classList.add('hidden');
 
+    // Show only the requested section by removing the 'hidden' class:
     const selected = document.getElementById(id);
     selected.classList.remove('hidden')
 
+    // Re-check isEmpty or not:
     checkNoJob();
 }
 
 
-// No Job Section:
+// No Job Section: According to Active Card > Get Length:
 function checkNoJob(){
     const noJob = document.getElementById('no-job');
 
     let length;
 
+    // Count > Based on the Active Section's Children:
     if(currentSection === 'jobs-cards'){
         length = document.getElementById('jobs-cards').children.length;
     }
@@ -37,6 +46,7 @@ function checkNoJob(){
         length = document.getElementById('rejected-container').children.length;
     }
 
+    // Show > "No Job Card" if length is zero:
     if(length === 0){
         noJob.classList.remove('hidden');
     }
@@ -45,7 +55,7 @@ function checkNoJob(){
     }
 }
 
-// Status Btn:
+// Status Btn: Dynamically Changes Card Style:
 function updateStatusBtn(card, type){
     const statusBtn = card.querySelector('.status-btn');
 
@@ -69,4 +79,5 @@ function updateStatusBtn(card, type){
         card.classList.add('border-l-4', 'border-red-500');
     }
 }
+
 
