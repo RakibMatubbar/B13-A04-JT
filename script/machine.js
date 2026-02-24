@@ -1,8 +1,9 @@
 // MACHINE.JS - The Engine of the Application:
 
-// Hidden / Show function: Which Section Want to Show or Hide:
 
+// DISPLAY HIDDEN AFTER CLICKING HEADER BTN:
 // Tracking which section is currently visible:
+
 let currentSection = 'jobs-cards';
 
 // Controls which main section to display:
@@ -24,12 +25,35 @@ function showOnly(id){
     const selected = document.getElementById(id);
     selected.classList.remove('hidden')
 
-    // Re-check isEmpty or not:
+    // Re-check Container isEmpty or not:
     checkNoJob();
+    // Update Dashboard Counting:
+    updateJobInfo();
 }
 
 
-// No Job Section: According to Active Card > Get Length:
+
+// CARD CLONE FUNCTION WITHIN INTERVIEW/REJECTED:
+
+function moveJobCard(card, targetContainer, move = false){
+
+    let cardClone;
+    
+    // Conditional Statement: if move = true then Move Original Card and I don't Want it. move = false then create a clone and I want it.
+    if(move){
+        cardClone = card;
+    }
+    else{
+        cardClone = card.cloneNode(true);
+    }
+    
+    targetContainer.appendChild(cardClone);
+}
+
+
+
+// SHOW NO JOB CARD WHEN ANY CONTAINER's LENGTH = 0:
+
 function checkNoJob(){
     const noJob = document.getElementById('no-job');
 
@@ -55,7 +79,10 @@ function checkNoJob(){
     }
 }
 
-// Status Btn: Dynamically Changes Card Style:
+
+
+// STATUS BTN, CHANGE IT AFTER CLICKING INTERVIEW/REJECTED:
+
 function updateStatusBtn(card, type){
     const statusBtn = card.querySelector('.status-btn');
 

@@ -1,31 +1,27 @@
 
 // DECLARE VARIABLE: DOM Elements & Selectors:
 
-// Dynamic Changing of Cards Length | Calculator:
+// To Calculate update-job-info & Total:
 let totalCount = document.getElementById('total-count');
 let updateInfo = document.getElementById('update-job-info');
 
-// To Store Data in Interview + Rejected Cards:
-const interviewContainer = document.getElementById('interview-container'); 
-const rejectedContainer = document.getElementById('rejected-container');
+// Get btnContainer To Change it's Color:
+const btnContainer = document.getElementById('jobs-btn-container');
+
+// To Get All Jobs Container:
+const jobsCardsContainer = document.getElementById('jobs-cards');
 
 // For Calculating Interview + Rejected Cards:
 let interviewCount = document.getElementById('interview-count');
 let rejectedCount = document.getElementById('rejected-count');
 
-// To Chnage Buttons Color after Clicking | Filter Btn:
-const allJobsBtn = document.getElementById('all-jobs-btn')
-const headInterviewBtn = document.getElementById('head-interview-btn')
-const headRejectedBtn = document.getElementById('head-rejected-btn')
-
-// To Get All Jobs Container:
-const jobsCardsContainer = document.getElementById('jobs-cards');
+// To Store Data in Interview + Rejected Cards:
+const interviewContainer = document.getElementById('interview-container'); 
+const rejectedContainer = document.getElementById('rejected-container');
 
 
+// DASHBOARD CALCULATING FUNCTION:
 
-// CALCULATING FUNCTION:
-
-// Calculate Card Counts:
 function updateJobInfo(){
     
     // To Get All Jobs Section's Children's Length:
@@ -39,9 +35,17 @@ function updateJobInfo(){
     totalCount.innerText = total;
     interviewCount.innerText = interview;
     rejectedCount.innerText = rejected;
-
-    // Update Status line:
-    updateInfo.innerText = `Total: ${total} | Interview: ${interview} | Rejected: ${rejected}`
+    
+    // Daynamic Status of Counting Cards:
+    if(currentSection === 'interview-cards'){
+        updateInfo.innerText = `${interview} of ${total} Jobs`;
+    }
+    else if(currentSection === 'rejected-cards'){
+        updateInfo.innerText = `${rejected} of ${total} Jobs`;
+    }
+    else{
+        updateInfo.innerText = `${total} Jobs `
+    }
 
     // Call the function to get No Job Card if any Container's Length === 0 :
     checkNoJob();
@@ -51,53 +55,37 @@ updateJobInfo();
 
 
 
-// HEADER BTN COLORS FUNCTION:
+// TO CHANGE HEADER BTN COLORS:
 
-function resetBtnColors(){
+btnContainer.addEventListener('click', function(event){
+    const btn = event.target.closest('button');
 
-    // Set 3 Variable's within an Array for Looping:
-    const buttons = [allJobsBtn, headInterviewBtn, headRejectedBtn];
-
-    buttons.forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'bg-green-600', 'bg-red-600', 'text-white')
-    });
-}
-
- // After Clicking Buttons > Call the Function to Remove Active Class form Buttons: and Add classlist to Activate and to Exicute:
-allJobsBtn.addEventListener('click', function(){
-    resetBtnColors();
-    allJobsBtn.classList.add('bg-blue-600', 'text-white')
-});
-
-headInterviewBtn.addEventListener('click', function(){
-    resetBtnColors();
-    headInterviewBtn.classList.add('bg-green-600', 'text-white')
-});
-
-headRejectedBtn.addEventListener('click', function(){
-    resetBtnColors();
-    headRejectedBtn.classList.add('bg-red-600', 'text-white')
-});
-
-
-
-// CARD MOVE FUNCTION:
-
-// To Move a Card within Interview + Rejected's Container:
-function moveJobCard(card, targetContainer, move = false){
-
-    let cardClone;
-    
-    // Conditional Statement: if move = true then Move Original Card and I don't Want it. move = false then create a clone and I want it.
-    if(move){
-        cardClone = card;
+    if(!btn){
+        return;
     }
-    else{
-        cardClone = card.cloneNode(true);
+
+    const allButtons = btnContainer.querySelectorAll('button');
+
+    // Looping ALl to Remove Default Color:
+    for(const button of allButtons){
+        button.classList.remove('bg-blue-600', 'bg-green-600', 'bg-red-600', 'text-white');
     }
-    
-    targetContainer.appendChild(cardClone);
-}
+
+    if(btn.id === 'all-jobs-btn'){
+        btn.classList.add('bg-blue-600', 'text-white')
+    }
+    else if(btn.id === 'head-interview-btn'){
+        btn.classList.add('bg-green-600', 'text-white')
+        
+    }
+    else if(btn.id === 'head-rejected-btn'){
+        btn.classList.add('bg-red-600', 'text-white')
+        
+    }
+});
+
+
+// TO CLONE A CARD WITHIN INTERVIEW/REJECTED CONTAINER:
 
 // Event Delegation for Inerview/Rejected Buttons:
 document.addEventListener('click', function(event){
@@ -115,11 +103,8 @@ document.addEventListener('click', function(event){
     // Destination Box where the Card Go:
     let destinationContainer; 
 
-
     // Update Text / Color NOT APPLIED Btn:
-
     // Set destination and update card styling based on the button clicked:
-
     if(btn.classList.contains('interview-btn')){
         destinationContainer = interviewContainer;
         updateStatusBtn(card, 'interview');
@@ -128,7 +113,6 @@ document.addEventListener('click', function(event){
         destinationContainer = rejectedContainer;
         updateStatusBtn(card, 'rejected');
     }
-
 
     // if the card is taken from the main list, the original will be left there and a copy (clone) will be sent. But once the copy is made, if it is later sent to Rejected from the interview, it will be removed directly.
     const isFromAllJobs = sourceContainer === jobsCardsContainer;
@@ -154,10 +138,12 @@ document.addEventListener('click', function(event){
 
     updateJobInfo();
 
-})
+});
 
 
-// DELETE CARDS:
+
+// TO DELETE CARDS FROM ANYWHERE:
+
 // Delete Job Card after clicking '.delete-btn':
 document.addEventListener('click', function(event){
     const deleteBtn = event.target.closest('.delete-btn');
@@ -173,9 +159,11 @@ document.addEventListener('click', function(event){
     }
 
     card.remove();
+    alert('Delete Card.')
 
     updateJobInfo();
 
-})
+});
+
 
 
